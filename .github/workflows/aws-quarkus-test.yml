@@ -10,10 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup JDK
-        uses: action/setup-java@v2
+        uses: action/setup-java@v4
         with:
+          distribution: 'corretto'
           java-version: '21'
-          distribution:  'corretto'
           cache: 'maven'
       - name: Maven build
-        run: mvn -B package --file pom.xml
+        run: ./mvnw -B package
