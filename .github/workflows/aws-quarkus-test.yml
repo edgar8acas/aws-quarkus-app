@@ -1,8 +1,5 @@
 name: aws-quarkus-test
-on:
-  push:
-    branches:
-      - "main"
+on: push
 jobs:
   build:
     timeout-minutes: 30
@@ -10,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup JDK
-        uses: action/setup-java@v4
+        uses: actions/setup-java@v4
         with:
           distribution: 'corretto'
           java-version: '21'
