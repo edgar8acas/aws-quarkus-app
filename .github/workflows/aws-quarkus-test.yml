@@ -41,7 +41,7 @@ jobs:
           role-session-name: aws.quarkus.test
       - name: Deploy
         run: |
-          aws s3 cp "staging/${{github.run_id}}.jar" s3://my-bucket-edgar8a/quarkus-app-artifact/
+          aws s3 cp "deploy-files/${{github.run_id}}.jar" s3://my-bucket-edgar8a/quarkus-app-artifact/
           aws elasticbeanstalk create-application-version --application-name $BEANSTALK_APP_NAME --version-label ${{github.run_id}} --description ${{github.run_id}} --source-bundle S3Bucket="my-bucket-edgar8a",S3Key="quarkus-app-artifact/${{github.run_id}}.jar"
           aws elasticbeanstalk update-environment --application-name $BEANSTALK_APP_NAME --environment-name $BEANSTALK_ENV_NAME --version-label ${{github.run_id}}
           aws elasticbeanstalk wait environment-updated --application-name $BEANSTALK_APP_NAME --environment-name $BEANSTALK_ENV_NAME
