@@ -36,7 +36,7 @@ jobs:
         with:
           audience: sts.amazonaws.com
           aws-region: us-east-1
-          role-to-asume: arn:aws:iam::491085423241:role/GitHubAction-AssumeRoleWithAction
+          role-to-assume: arn:aws:iam::491085423241:role/GitHubAction-AssumeRoleWithAction
           role-session-name: aws.quarkus.test
       - name: Deploy
         run: |
