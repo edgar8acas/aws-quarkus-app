@@ -21,10 +21,11 @@ jobs:
       - name: Maven build
         run: ./mvnw -B package
       - run: mkdir staging && cp target/*.jar staging/${{github.run_id}}.jar
-      - uses: actions/upload-artifact@v4
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
-          name: Package
-          path: staging
+          name: deploy-files
+          path: staging/${{github.run_id}}.jar
   deploy:
     timeout-minutes: 30
     needs: build
