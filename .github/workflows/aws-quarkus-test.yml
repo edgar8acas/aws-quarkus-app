@@ -19,7 +19,7 @@ jobs:
           java-version: '21'
           cache: 'maven'
       - name: Maven build
-        run: ./mvnw -B package
+        run: ./mvnw -B package -Dquarkus.package.jar.type=uber-jar
       - run: mkdir staging && cp target/*.jar staging/${{github.run_id}}.jar
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
